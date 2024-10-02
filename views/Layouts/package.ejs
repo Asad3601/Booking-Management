@@ -1,0 +1,168 @@
+<div class="container mt-5">
+    <h1>
+        <%= tour.place%>
+    </h1>
+
+    <!-- Main Image Section -->
+    <div class="row mt-3">
+        <div class="col-md-6">
+            <i class="fa fa-map-marker-alt" style="margin-right: 8px;"></i>
+            <span style="margin-right: 20px;"><%= tour.destination.destination_name %></span>
+
+            <i class="fa fa-dollar-sign" style="margin-right: 8px;"></i>
+            <span style="margin-right: 20px;"><%= tour.price %></span>
+
+            <i class="fa fa-clock" style="margin-right: 8px;"></i>
+            <span><%= tour.duration %> Days</span>
+        </div>
+    </div>
+
+
+    <div class="row mt-4">
+        <div class="col-md-6">
+            <img src="/tours/<%= tour.tourImages.images[0] %>" alt="Image 0" class="img-fluid main-image">
+        </div>
+        <div class="col-md-6">
+            <div class="row mb-2">
+                <div class="col-6">
+                    <img src="/tours/<%= tour.tourImages.images[1] %>" alt="Image 1" class="img-fluid thumbnail-image equal-size">
+                </div>
+                <div class="col-6">
+                    <img src="/tours/<%= tour.tourImages.images[2] %>" alt="Image 2" class="img-fluid thumbnail-image equal-size">
+                </div>
+            </div>
+            <div class="row mb-2">
+                <div class="col-6">
+                    <img src="/tours/<%= tour.tourImages.images[3] %>" alt="Image 3" class="img-fluid thumbnail-image equal-size">
+                </div>
+                <div class="col-6">
+                    <img src="/tours/<%= tour.tourImages.images[4] %>" alt="Image 4" class="img-fluid thumbnail-image equal-size">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Thumbnail Images Section -->
+
+
+    <!-- Tour Details Section -->
+    <div class="mt-5">
+        <h2>Description</h2>
+        <p>
+            <%= tour.description%>
+        </p>
+    </div>
+
+    <!-- List View Section -->
+    <div class="mt-5">
+        <h2>What's Include</h2>
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-md-3">
+                    <div><strong>Destination</strong> </div>
+                </div>
+                <div class="col-md-3">
+                    <div>
+                        <%= tour.destination.destination_name%>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-3">
+                    <div><strong>Departure Location</strong> </div>
+                </div>
+                <div class="col-md-3">
+                    <div>
+                        <%= tour.departure_loc%>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-md-3">
+                    <div><strong>Duration:</strong></div>
+                </div>
+                <div class="col-md-3">
+                    <div>
+                        <%= new Date(tour.start_date).toLocaleDateString('en-US', { day: '2-digit', month: 'short', year: 'numeric' }) %> <strong>To</strong>
+                            <%= new Date(tour.end_date).toLocaleDateString('en-US', { day: '2-digit', month: 'short', year: 'numeric' }) %>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-md-3">
+                    <div><strong>Return</strong> </div>
+                </div>
+                <div class="col-md-3">
+                    <div>
+                        <%= tour.return_on%> on Day
+                            <%= tour.duration%>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-3">
+                    <div><strong>Facilities</strong></div>
+                </div>
+                <div class="col-md-9">
+                    <div class="row">
+                        <% tour.facilities.forEach(function(facility, index) { %>
+                            <div class="col-md-6">
+                                <li>
+                                    <%= facility %>
+                                </li>
+                            </div>
+                            <% }); %>
+                    </div>
+                </div>
+            </div>
+
+            <hr>
+        </div>
+    </div>
+    <div class="mt-5">
+        <h2>Literary Schedule</h2>
+        <div class="container mt-4">
+            <hr>
+            <div class="row">
+                <% if (dailyTemps && dailyTemps.length > 0) { %>
+                    <!-- Loop through the first 3 days of weather data -->
+                    <% for (let i = 0; i < 3 && i < dailyTemps.length; i++) { 
+                        const formattedDate = new Date(dailyTemps[i].date).toLocaleDateString('en-US', {
+                            day: '2-digit',
+                            month: 'short',
+                            year: 'numeric'
+                        });
+                        const iconUrl = `http://openweathermap.org/img/wn/${dailyTemps[i].icon}@2x.png`; // Icon URL
+                    %>
+                        <div class="col-md-4 mb-3">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <h5 class="card-title">Date:
+                                        <%= formattedDate %>
+                                    </h5>
+                                    <img src="<%= iconUrl %>" alt="Weather Icon" class="img-fluid mb-2">
+                                    <p class="card-text">Average Temperature:
+                                        <%= dailyTemps[i].avgTemp %> °C</p>
+                                </div>
+                            </div>
+                        </div>
+                        <% } %>
+                            <% } else { %>
+                                <p>No weather data available for this period.</p>
+                                <% } %>
+            </div>
+            <hr>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class=" justify-content-center align-items-center ml-lg-5">
+            <a href="/book_tour/<%= tour._id%>" class="btn btn-primary">Book Tour</a>
+        </div>
+    </div>
+
+</div>

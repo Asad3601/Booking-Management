@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Admin Panel</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+
+    <!-- Favicon -->
+    <link href="/img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <style>
+        /* Sidebar custom styling */
+        
+        .sidebar {
+            height: 100%;
+            position: fixed;
+            top: 85px;
+            /* Aligns it below the header */
+            left: 0;
+            background-color: white;
+            padding-top: 70px;
+            padding-left: 30px;
+            width: 250px;
+            border-right: 1px solid rgb(88, 80, 80);
+        }
+        
+        .sidebar a {
+            padding: 0px 15px;
+            text-align: left;
+            font-size: 18px;
+            font-weight: 500;
+            display: block;
+        }
+        
+        .sidebar a:hover {
+            color: #000;
+        }
+        /* Adjust content area */
+        
+        .content {
+            margin-left: 300px;
+            /* Same width as the sidebar */
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Topbar Start -->
+    <%- include('admin/header') %>
+        <!-- Topbar End -->
+
+
+
+        <!-- Sidebar Start -->
+        <div class="sidebar">
+            <a href="/"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+            <hr>
+            <a href="/destination"><i class="fas fa-plus"></i> Add Destination</a>
+            <hr>
+            <a href="/add_tour"><i class="fas fa-plus"></i> Add Tour</a>
+            <hr>
+            <a href="/settings"><i class="fas fa-cog"></i> Settings</a>
+            <hr>
+            <a href="/help"><i class="fas fa-question-circle"></i> Help</a>
+            <hr>
+        </div>
+        <!-- Sidebar End -->
+
+        <!-- Content Area -->
+        <div class="content mt-3">
+            <%- include(MainView) %>
+        </div>
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+        <!-- Bootstrap JS and Popper.js (for Bootstrap 4) -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

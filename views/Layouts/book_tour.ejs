@@ -1,0 +1,51 @@
+<div class="container-fluid bg-registration py-5" style="margin: 20px 0;">
+    <div class="container py-5">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-5 mb-lg-0" style="margin-left: 260px;">
+                <div class="card border-0">
+                    <div class="card-header bg-primary text-center p-4">
+                        <h3 class="text-white m-0">Confirm Your Booking</h3>
+                    </div>
+                    <div class="card-body rounded-bottom bg-white p-5">
+                        <form action="/book_tour" method="post">
+                            <!-- Name -->
+                            <div class="form-group">
+                                <input type="text" class="form-control p-4" value="<%= user.first_name%><%= user.last_name%>" required="required" readonly/>
+                            </div>
+
+                            <!-- Email -->
+                            <div class="form-group">
+                                <input type="email" class="form-control p-4" value="<%= user.email%>" required="required" readonly />
+                            </div>
+                            <div class="form-group">
+                                <input type="hidden" class="form-control p-4" value="<%= tour_id %>" name="tour_id" />
+                            </div>
+                            <!-- Row for number of adults and children -->
+                            <div class="form-row">
+                                <div class="col-md-6 form-group">
+                                    <input type="number" class="form-control p-4" name="adults" placeholder="No of Adults" required="required" />
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <input type="number" class="form-control p-4" name="childs" placeholder="No of Children" required="required" />
+                                </div>
+                            </div>
+
+                            <!-- Phone Number -->
+                            <div class="form-group">
+                                <input type="text" class="form-control p-4" placeholder="Phone Number" required="required" name="phone_no" />
+                            </div>
+
+                            <!-- Payment Method (Moved to the bottom) -->
+
+
+                            <!-- Submit Button -->
+
+                            <button class="btn btn-primary btn-block py-3 " type="submit">Confirm</button>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

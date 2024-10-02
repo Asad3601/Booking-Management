@@ -1,0 +1,64 @@
+<div class="container-fluid py-5">
+    <div class="container pt-2 pb-3">
+        <div class="text-center mb-3 pb-3">
+            <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Tours</h6>
+            <h1>My Tours</h1>
+        </div>
+        <% if(tours.length>0) {%>
+            <div class="row">
+                <% tours.forEach(bookTour => { %>
+                    <div class="col-lg-4 col-md-6 mb-4">
+
+                        <div class="package-item bg-white mb-2 d-flex flex-column h-100">
+                            <!-- Access the images array -->
+                            <% if (bookTour.tour.tourImages && bookTour.tour.tourImages.images.length > 0) { %>
+                                <img class="img-fluid h-50" src="/tours/<%= bookTour.tour.tourImages.images[4] %>" alt="Tour Image">
+                                <% } else { %>
+                                    <img class="img-fluid h-50" src="/tours/default-image.jpg" alt="">
+                                    <% } %>
+                                        <div class="p-4 flex-grow-1">
+                                            <div class="d-flex justify-content-between mb-3">
+                                                <small class="m-0">
+                                        <i class="fa fa-map-marker-alt text-primary mr-2"></i>
+                                        <%= bookTour.tour.place %>
+                                    </small>
+                                                <small class="m-0">
+                                        <i class="fa fa-calendar-alt text-primary mr-2"></i>
+                                        <%= bookTour.tour.duration %> Days
+                                    </small>
+                                            </div>
+                                            <h5 class="h5 text-decoration-none">
+                                                <%= bookTour.tour.description %> ...
+                                            </h5>
+                                            <div class="border-top mt-4 pt-4">
+                                                <div class="d-flex justify-content-between" style="width: 100%;">
+                                                    <!-- Delete Icon -->
+                                                    <a href="/delete_booking_tour/<%= bookTour._id %>" class="text-danger" title="Delete">
+                                                        <i class="fa fa-trash fa-lg fa-2x"></i>
+                                                    </a>
+                                                    <!-- Update Icon -->
+                                                    <a href="/edit_tour_booking/<%= bookTour._id %>" class="text-warning" title="Update">
+                                                        <i class="fa fa-edit fa-lg fa-2x"></i>
+                                                    </a>
+                                                    <!-- Details Icon -->
+                                                    <a href="/tour_detail/<%= bookTour._id %>" class="" title="Details">
+                                                        <i class="fa fa-info-circle fa-lg fa-2x"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+                        </div>
+
+                    </div>
+                    <% }) %>
+
+            </div>
+            <%}else{%>
+                <div class="row mt-5">
+                    <h3 style="color: rgb(227, 15, 15);"><strong>Not Booked Any Tour</strong></h3>
+                </div>
+                <%}%>
+    </div>
+</div>

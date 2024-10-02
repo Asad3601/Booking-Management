@@ -1,0 +1,17 @@
+<div class="row">
+    <div class="col-6">
+        <h2>
+            Add New Destination</h2>
+        <form action="/destination" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="destination_name">Destination Name</label>
+                <input type="text" class="form-control" id="destination_name" name="destination_name" placeholder="Enter destination name" required>
+            </div>
+            <div class="form-group">
+                <label for="destination_image">Destination Image</label>
+                <input type="file" class="form-control-file" id="destination_image" name="destination_image" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Add Destination</button>
+        </form>
+    </div>
+</div>

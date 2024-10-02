@@ -1,0 +1,78 @@
+<div class="row">
+    <div class="col-7">
+        <h2>Create a New Tour</h2>
+        <form action="/add_tour" method="POST" enctype="multipart/form-data">
+
+            <!-- Row for Price and Duration -->
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="price">Price</label>
+                    <input type="number" class="form-control" id="price" name="price" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="duration">Duration</label>
+                    <input type="text" class="form-control" id="duration" name="duration" placeholder="e.g., 3 days" required>
+                </div>
+            </div>
+
+            <!-- Row for Place -->
+
+            <div class="form-group">
+                <label for="place">Place</label>
+                <input type="text" class="form-control" id="place" name="place" required>
+            </div>
+
+
+            <!-- Row for Start Date and End Date -->
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="start_date">Start Date</label>
+                    <input type="date" class="form-control" id="start_date" name="start_date" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="end_date">End Date</label>
+                    <input type="date" class="form-control" id="end_date" name="end_date" required>
+                </div>
+            </div>
+
+            <!-- Row for Departure Location -->
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="departure_loc">Departure Location</label>
+                    <input type="text" class="form-control" id="departure_loc" name="departure_loc" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="return_on">Return On</label>
+                    <input type="text" class="form-control" id="return" name="return_on" required>
+                </div>
+            </div>
+
+            <!-- Destination Dropdown -->
+            <div class="form-group">
+                <label for="destination">Destination</label>
+                <select class="form-control" id="destination" name="destination" required>
+                    <!-- Populate options from the server-side -->
+                    <option value="">Select a Destination</option>
+                    <% destinations.forEach(function(dest) { %>
+                        <option value="<%= dest._id %>"><%= dest.destination_name %></option>
+                    <% }); %>
+                </select>
+            </div>
+
+            <!-- Tour Images -->
+            <div class="form-group">
+                <label for="tour_images">Tour Images</label>
+                <input type="file" class="form-control" id="tour_images" name="tour_images" multiple>
+            </div>
+
+            <!-- Description at the end -->
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea class="form-control" id="description" name="description" rows="4" required></textarea>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-primary">Create Tour</button>
+        </form>
+    </div>
+</div>

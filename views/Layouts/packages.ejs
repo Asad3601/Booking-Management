@@ -1,0 +1,88 @@
+<div class="container-fluid page-header">
+    <div class="container">
+        <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 400px">
+            <h3 class="display-4 text-white text-uppercase">Packages</h3>
+            <div class="d-inline-flex text-white">
+                <p class="m-0 text-uppercase"><a class="text-white" href="">Home</a></p>
+                <i class="fa fa-angle-double-right pt-1 px-3"></i>
+                <p class="m-0 text-uppercase">Packages</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid py-5">
+    <div class="container pb-3">
+        <div class="text-center pb-3">
+            <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Packages</h6>
+            <h1>Pefect Tour Packages</h1>
+        </div>
+        <% if (query && (query.destination || query.from_date || query.to_date || query.price)) { %>
+            <div class="row mb-2 ml-lg-1">
+                <h3>Results
+                    <% if (query.destination) { %>
+                        From Destination "
+                        <%= query.destination %>"
+                            <% } %>
+                                <% if (query.from_date && query.to_date) { %>
+                                    From Dates"
+                                    <%= query.from_date %>" To "
+                                        <%= query.to_date %>"
+                                            <% } else if (query.from_date) { %>
+                                                From Date"
+                                                <%= query.from_date %>" To Last Date
+                                                    <% } else if (query.to_date) { %>
+                                                        From Ist Date To That Date"
+                                                        <%= query.to_date %>"
+                                                            <% } %>
+                                                                <% if (query.price) { %>
+                                                                    From Price Range "$
+                                                                    <%= query.price %>"
+                                                                        <% } %>
+                </h3>
+            </div>
+            <% } %>
+
+                <% if(allTours.length>0){%>
+                    <div class="row">
+                        <% allTours.forEach(tour=>{ %>
+                            <div class="col-lg-4 col-md-6 mb-4">
+                                <a href="/tour/<%= tour._id %>" class="text-decoration-none">
+                                    <div class="package-item bg-white mb-2 d-flex flex-column h-100">
+                                        <img class="img-fluid h-50" src="/tours/<%= tour.tourImages.images[4] %>" alt="">
+                                        <div class="p-4 flex-grow-1">
+                                            <div class="d-flex justify-content-between mb-3">
+                                                <small class="m-0">
+                                        <i class="fa fa-map-marker-alt text-primary mr-2"></i><%= tour.place %>
+                                    </small>
+                                                <small class="m-0">
+                                        <i class="fa fa-calendar-alt text-primary mr-2"></i><%= tour.duration %> Days
+                                    </small>
+                                            </div>
+                                            <h5 class="h5 text-decoration-none">
+                                                <%= tour.description %> ...
+                                            </h5>
+                                            <div class="border-top mt-4 pt-4">
+                                                <div class="d-flex justify-content-between">
+                                                    <h6 class="m-0">
+                                                        <i class="fa fa-star text-primary mr-2"></i>4.5 <small>(250)</small>
+                                                    </h6>
+                                                    <h5 class="m-0 mb-0">$
+                                                        <%= tour.price %>
+                                                    </h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <% }) %>
+                    </div>
+                    <%}else{%>
+                        <div class="row mt-3 ml-lg-1">
+                            <strong> <h4 style="color: red;">Not Any Record Tour Found</h4></strong>
+                        </div>
+                        <%}%>
+
+    </div>
+</div>

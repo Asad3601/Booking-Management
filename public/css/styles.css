@@ -1,0 +1,49 @@
+.d-flex {
+    display: flex;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.align-items-center {
+    align-items: center;
+}
+
+.mb-3 {
+    margin-bottom: 1rem;
+}
+
+.mb-2 {
+    margin-bottom: 0.5rem;
+}
+
+input,
+select {
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    width: 100%;
+}
+
+.package-item img {
+    width: 100%;
+    /* Make the image take full width of its container */
+    height: auto;
+    /* Maintain aspect ratio */
+    object-fit: cover;
+    /* Cover the area if the aspect ratio is different */
+}
+
+.equal-size {
+    height: 200px;
+    /* Set a fixed height for all images */
+    width: 100%;
+    /* Ensure the width takes full container width */
+    object-fit: cover;
+    /* Ensures the image covers the entire container */
+}
+
+.main-image {
+    width: 100%;
+    height: 410px;
+}
